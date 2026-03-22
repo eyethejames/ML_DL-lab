@@ -1,14 +1,10 @@
-<<<<<<< HEAD
-=======
 # .gitignore file for a Python project
->>>>>>> b1661f9 (Initial project structure)
 .venv/
 __pycache__/
 .ipynb_checkpoints/
 data/raw/
 models/
-<<<<<<< HEAD
 outputs/
-=======
-outputs/
->>>>>>> b1661f9 (Initial project structure)
+.DS_Store
+*.keras
+OF_RELEVANCE.md
