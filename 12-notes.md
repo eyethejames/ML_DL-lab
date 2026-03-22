@@ -28,7 +28,29 @@ Resultatet ser bra ut, og gir enda smoothere graf
 - ligger litt høyere enn Conv1D-plottet (4.2-4.3) vs (3.0)
 tyder på at modellen er stabil og pen å trene, men ser ut til å være svakere enn Conv1D på validation MAE.
 
-Dette er egentlig et fint eksempel på at en enklere sekvensmodell kan slå en mer avansert modell, og viser oss at LSTM ikke automatisk er best men at Conv1D er både raskere og bedre.
+d. Regularisert LSTM / recurrent-modell
+- trente lenge og stabilt
+- validation MAE ender på rundt 4.66
+så allerede nå ser det ut som at Conv1D fortsatt virker bedre
+
+e. Stacked GRU-modell
+Stacked recurrent-modeller kan fange mer komplekse tidsavhengigheter enn en enkelt LSTM, men prisen er:
+- mer treningstid
+- flere parametre
+- økt overfitting-risiko
+- større behov for regularisering
+Resultat:
+- Test MAE på 3.94
+- nan på: loss, mae, val_loss og val_mae
+=> Brukbart resultat, men svakere enn de beste modellene testet
+
+f. Bidirectional LSTM
+Denne modellen leser inputsekvensen en gang forlengs og en gang baklengs i tid, og kombinerer det den lærer fra begge retninger.
+=> Helt greit, men ikke spesielt sterkt resultat.
+- modellen lærer relativt stabilt
+- ender på en relativt høy validation MAE (5.72)
+
+Dette er egentlig et fint eksempel på at en enklere sekvensmodell kan slå en mer avansert modell, og viser oss at LSTM, eller en enda mer komplekse og tidkrevende modeller som stacked GRU eller regularisert recurrent-modell ikke automatisk er best, men at Conv1D er både raskere og bedre.
 
 Det er nettopp arkitekturen, altså hvordan modellen er bygd opp som gjør at de lærer ulikt.
 Dense ser bare en lang vektor og utnytter ikke tidsrekkefølgen
